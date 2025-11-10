@@ -1,6 +1,6 @@
 #!/bin/bash
 for branch in dev test feature; do
-  git branch $branch
+  git branch -d $branch
 done
 
 
