@@ -1,19 +1,14 @@
 ---
 - name: Play book for Demo
-  hosts: localhost
+  hosts: local
+  connection: local
   become: yes
-  gather_facts: no
-  remote_user: jenkins
-  tasks: 
-   - name: Task to create a new user
-     user:
-      name: auser01
-      update_password: always
-      password: "{{ 'test123' | password_hash('sha512') }}"
-      uid: 8899
-      home: /home/auser01
-      shell: /bin/bash
-      comment: Created by Ansible Playbook
-      state: present
-...
-#End of the play
+  become_method: sudo
+
+  tasks:
+    - name: Task to create a new user
+      user:
+        name: demo_user
+        state: present
+        shell: /bin/bash
+        comment: "Created by Jenkins Ansible job"
