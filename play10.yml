@@ -1,31 +1,12 @@
 ---
-#A single playbook can contain multiple plays. 
-#Below demonstrate the same
-- name: Play1 for installing http and https
-  become: true
-  become_user: root
+- name: Create a user and add ssh public key to user's authorized keys
   hosts: localhost
-  tasks:
-   - name: Install httpd, firewalld and https
-     yum:
-      name:
-       - httpd
-       - mod_ssl
-       - firewalld
-      state: latest
-- name: Play2 for starting firewalld and http web services
   become: true
-  become_user: root
-  hosts: localhost
+  remote_user: ansible
   tasks:
-   - name: Start firewalld service
-     service:
-      name: firewalld
-      state: started
-      enabled: yes
-   - name: Start http
-     service:
-      name: httpd
-      state: started
-      enabled: yes
+   - name: Add a user
+     user:
+       name: asianaa
+       password: "{{ 'test123' | password_hash('sha512')}}"
+       state: present 
 ...
