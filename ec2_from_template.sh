@@ -14,7 +14,6 @@ instance_id=$(aws ec2 run-instances \
     --output text)
 if [ $? -ne 0 ]; then
     echo "EC2 Launch Failed."
-    exit 1
 fi
 echo "EC2 Launched Successfully!"
 echo "Instance ID: $instance_id"
