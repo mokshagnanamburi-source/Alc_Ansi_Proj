@@ -1,6 +1,6 @@
 ---
 - name: Play book for Demo
-  hosts: local
+  hosts: localhost
   connection: local
   become: yes
   become_method: sudo
