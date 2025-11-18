@@ -8,7 +8,7 @@
   tasks:
     - name: Task to create a new user
       user:
-        name: demo_user
+        name: asian
         state: present
         shell: /bin/bash
         comment: "Created by Jenkins Ansible job"
